@@ -12,7 +12,7 @@ use Elastica\Exception\InvalidException;
  * @author Nicolas Ruflin <spam@ruflin.com>
  * @link http://www.elasticsearch.org/guide/reference/query-dsl/bool-query.html
  */
-class Bool extends AbstractFilter
+class BoolFilter extends AbstractFilter
 {
     /**
      * @var float
@@ -44,7 +44,7 @@ class Bool extends AbstractFilter
      * Adds should filter
      *
      * @param  array|\Elastica\Filter\AbstractFilter $args Filter data
-     * @return \Elastica\Filter\Bool           Current object
+     * @return \Elastica\Filter\BoolFilter           Current object
      */
     public function addShould($args)
     {
@@ -55,7 +55,7 @@ class Bool extends AbstractFilter
      * Adds must filter
      *
      * @param  array|\Elastica\Filter\AbstractFilter $args Filter data
-     * @return \Elastica\Filter\Bool           Current object
+     * @return \Elastica\Filter\BoolFilter           Current object
      */
     public function addMust($args)
     {
@@ -66,7 +66,7 @@ class Bool extends AbstractFilter
      * Adds mustNot filter
      *
      * @param  array|\Elastica\Filter\AbstractFilter $args Filter data
-     * @return \Elastica\Filter\Bool           Current object
+     * @return \Elastica\Filter\BoolFilter           Current object
      */
     public function addMustNot($args)
     {
@@ -79,7 +79,7 @@ class Bool extends AbstractFilter
      * @param  string                               $type Filter type
      * @param  array|\Elastica\Filter\AbstractFilter $args Filter data
      * @throws \Elastica\Exception\InvalidException
-     * @return \Elastica\Filter\Bool           Current object
+     * @return \Elastica\Filter\BoolFilter           Current object
      */
     protected function _addFilter($type, $args)
     {
@@ -134,7 +134,7 @@ class Bool extends AbstractFilter
      * Sets the boost value for this filter
      *
      * @param  float                      $boost Boost
-     * @return \Elastica\Filter\Bool Current object
+     * @return \Elastica\Filter\BoolFilter Current object
      */
     public function setBoost($boost)
     {

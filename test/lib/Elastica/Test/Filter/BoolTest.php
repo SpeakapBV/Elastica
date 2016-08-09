@@ -3,7 +3,7 @@
 namespace Elastica\Test\Filter;
 
 use \Elastica\Query;
-use Elastica\Filter\Bool;
+use Elastica\Filter\BoolFilter;
 use Elastica\Filter\Term;
 use Elastica\Filter\Ids;
 use Elastica\Test\Base as BaseTest;
@@ -12,7 +12,7 @@ class BoolTest extends BaseTest
 {
     public function testToArray()
     {
-        $mainBool = new Bool();
+        $mainBool = new BoolFilter();
 
         $idsFilter1 = new Ids();
         $idsFilter1->setIds(1);
@@ -21,7 +21,7 @@ class BoolTest extends BaseTest
         $idsFilter3 = new Ids();
         $idsFilter3->setIds(3);
 
-        $childBool = new Bool();
+        $childBool = new BoolFilter();
         $childBool->addShould(array($idsFilter1, $idsFilter2));
         $mainBool->addShould(array($childBool, $idsFilter3));
 
@@ -73,15 +73,15 @@ class BoolTest extends BaseTest
 
         //construct the query
         $query = new Query();
-        $mainBoolFilter = new Bool();
-        $shouldFilter = new Bool();
+        $mainBoolFilter = new BoolFilter();
+        $shouldFilter = new BoolFilter();
         $authorFilter1 = new Term();
         $authorFilter1->setTerm('author', 'jared');
         $authorFilter2 = new Term();
         $authorFilter2->setTerm('author', 'richard');
         $shouldFilter->addShould(array($authorFilter1, $authorFilter2));
 
-        $mustNotFilter = new Bool();
+        $mustNotFilter = new BoolFilter();
         $publisherFilter = new Term();
         $publisherFilter->setTerm('publisher', 'penguin');
         $mustNotFilter->addMustNot($publisherFilter);
